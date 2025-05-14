@@ -1,0 +1,15 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: file-tool-test
+
+# 文件上传配置
+file:
+  upload:
+    max-size: 10MB
+    temp-dir: ./temp
+  tool:
+    service:
+      url: http://localhost:8080 
