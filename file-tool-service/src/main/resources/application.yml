@@ -1,0 +1,46 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /file-tool
+
+spring:
+  application:
+    name: file-tool-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/file_tool?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: mysql2222
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  # JPA配置
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+# 文件存储配置
+file:
+  storage:
+    path: ./sources
+  upload:
+    # 上传文件存储路径
+    path: ./sources/upload-files
+    # 临时文件存储路径
+    temp-path: ./sources/temp-files
+  # 任务处理配置
+  task:
+    # 定时任务执行间隔（毫秒）
+    schedule-interval: 60000
+    # 处理线程池配置
+    thread-pool:
+      core-size: 5
+      max-size: 10
+      queue-capacity: 100
+      keep-alive-seconds: 60
